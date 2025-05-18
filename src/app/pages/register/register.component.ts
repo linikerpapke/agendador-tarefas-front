@@ -6,10 +6,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PasswordFieldComponent } from '../../shared/components/password-field/password-field.component';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  imports: [MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, PasswordFieldComponent, ReactiveFormsModule],
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    PasswordFieldComponent,
+    ReactiveFormsModule,
+    CommonModule
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
   encapsulation: ViewEncapsulation.None
