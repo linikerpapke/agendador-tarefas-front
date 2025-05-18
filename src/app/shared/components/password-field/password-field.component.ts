@@ -16,6 +16,13 @@ export class PasswordFieldComponent {
 
   @Input({required: true}) control!: FormControl;
 
+  get passwordErros(): string | null {
+    const passwordControl = this.control;
+    if (passwordControl?.hasError('required')) return 'O cadastro da senha é obrigatória';
+    if (passwordControl?.hasError('minlength')) return 'Cadastre uma senha com no mínimo 6 dígitos';
+    return null
+  }
+
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
