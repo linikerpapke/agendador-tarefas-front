@@ -20,3 +20,12 @@
         display: none;
     }
 }
+
+.register-component .cad-button-content {
+    display: inline-flex;
+    align-items: center;
+
+    mat-spinner {
+        margin-left: 8px;
+    }
+}

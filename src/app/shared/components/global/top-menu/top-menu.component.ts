@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { filter, Subscription } from 'rxjs';
+import { RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { RouterStateService } from '../../../../core/router/router-state.service';
 
 @Component({
   selector: 'app-top-menu',
@@ -13,20 +14,15 @@ import { filter, Subscription } from 'rxjs';
 })
 export class TopMenuComponent implements OnInit, OnDestroy {
   appLogo = 'assets/logo-agendador-javanauta.png';
-
   rotaAtual: string = '';
   inscricaoRota!: Subscription;
 
-  constructor(private router: Router) {}
+  private routerService = inject(RouterStateService);
 
   ngOnInit(): void {
-    this.rotaAtual = this.router.url
-    this.inscricaoRota = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((evento: NavigationEnd) => {
-        this.rotaAtual = evento.url
-        console.log("rotaAtual:", this.rotaAtual)
-      })
+    this.inscricaoRota = this.routerService.rotaAtual$.subscribe(url => {
+      this.rotaAtual = url;
+    })
   }
 
   ngOnDestroy(): void {
