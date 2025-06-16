@@ -12,6 +12,6 @@
 
     <span class="spacer"></span>
 
-    <button mat-button>Entrar</button>
+    <button mat-button [disabled]="estaNaRotaLogin()" routerLink="/login">Entrar</button>
     <button mat-flat-button [disabled]="estaNaRotaRegister()" routerLink="/register">Cadastrar-se</button>
 </mat-toolbar>
