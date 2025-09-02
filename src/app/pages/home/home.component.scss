@@ -1,0 +1,35 @@
+.home-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2rem;
+    flex-wrap: wrap;
+
+    .hero-text {
+        max-width: 500px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-actions button {
+        margin-right: 1rem;
+    }
+
+    .hero-image {
+        flex: 1 1 400px;
+        display: flex;
+        justify-content: center;
+
+        img {
+            max-width: 50%;
+        }
+    }
+}
