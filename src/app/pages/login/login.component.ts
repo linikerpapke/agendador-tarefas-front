@@ -41,12 +41,12 @@ export class LoginComponent {
   ) {
     this.form = this.formBuilder.group({
       email: this.formBuilder.control('', { validators: [Validators.required, Validators.email], nonNullable: true }),
-      senha: this.formBuilder.control('', { validators: [Validators.required, Validators.minLength(6)],nonNullable: true })
+      senha: this.formBuilder.control('', { validators: [Validators.required, Validators.minLength(6)], nonNullable: true })
     });
   }
 
   ngOnInit(): void {
-    if(this.authService.isLoggedIn()) {
+    if (this.authService.isLoggedIn()) {
       this.router.navigate(['/tasks'])
     }
   }
@@ -77,6 +77,12 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           this.authService.saveToken(response)
+          this.userService.getUserByEmail(response).subscribe({
+            next: (user) => {
+              this.authService.saveUser(user)
+            }
+          }
+          )
           this.router.navigate(['/tasks'])
         },
         error: (error) => {
