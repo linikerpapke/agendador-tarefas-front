@@ -1,0 +1,31 @@
+.meus-dados-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+
+    h3 {
+        margin-bottom: 0;
+    }
+
+    .meus-dados-header {
+        padding: 0 1rem;
+
+        .meus-dados-titulo {
+            padding-bottom: 1rem;
+        }
+    }
+
+    .item-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .item-text {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+}
