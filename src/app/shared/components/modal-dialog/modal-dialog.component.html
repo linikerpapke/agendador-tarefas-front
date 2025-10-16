@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content>
+    <form [formGroup]="form">
+
+        @for (field of fields; track field.name) {
+        <mat-form-field class="full-width">
+            <mat-label>{{field.label}}</mat-label>
+            <input matInput [type]="field.type || 'text'" [formControlName]="field.name" />
+            @if(field.button) {
+            <button mat-icon-button matSuffix (click)="field.button.callback(form.get(field.name)?.value, dialogRef)">
+                <mat-icon>{{field.button.icon}}</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+        }
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button (click)="onSave()">Ok</button>
+</mat-dialog-actions>
